@@ -9,7 +9,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const token = useSelector((store) => store.site.token);
 
   const getPosts = async () => {
-    const response = await fetch("http://localhost:8000/posts/approved", {
+    const response = await fetch("http://localhost:8000/posts", {
       method: "GET",
       headers: { Authorization: `${token}` },
     });

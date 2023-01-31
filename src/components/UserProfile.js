@@ -35,7 +35,14 @@ const UserProfile = () => {
         // onClick={() => navigate(`/profile/${userId}`)}
       >
         <FlexBetween gap="1rem">
-          <Avatar src={`data:image/jpeg;base64,${user.picturePath}`} />
+          <Avatar
+            src={`data:image/jpeg;base64,${user.picturePath}`}
+            sx={{
+              height: "60px",
+              width: "60px",
+              objectFit: "fill",
+            }}
+          />
           <Box>
             <Typography
               variant="h4"
