@@ -26,12 +26,12 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import FlexBetween from "./FlexBetween";
 import { setMode, setLogout } from "../siteslise";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { mode, posts, users } = useSelector((store) => store.site);
   const user = useSelector((store) => store.site.user);
-  console.log(user.picturePath);
+  // console.log(user.picturePath);
 
   const image = "http://localhost:8000/assets/${picturePath}";
 
@@ -79,6 +79,9 @@ const Navbar = () => {
           <IconButton>
             <Help></Help>
           </IconButton>
+        </FlexBetween>
+        <FlexBetween>
+          {user.role == "writer" ? <Link to={"/new-post"}>New Post</Link> : " "}
         </FlexBetween>
         <FlexBetween>
           {" "}

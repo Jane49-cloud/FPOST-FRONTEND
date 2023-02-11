@@ -4,7 +4,7 @@ const initialState = {
   mode: { light: true },
   user: null,
   token: null,
-  Users: [],
+  users: [],
   posts: [],
 };
 
@@ -23,6 +23,9 @@ const siteSlice = createSlice({
       state.user = null;
       state.token = null;
     },
+    setUsers: (state, action) => {
+      state.users = action.payload.users;
+    },
     setPosts: (state, action) => {
       state.posts = action.payload.posts;
     },
@@ -36,6 +39,13 @@ const siteSlice = createSlice({
   },
 });
 
-export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } =
-  siteSlice.actions;
+export const {
+  setMode,
+  setLogin,
+  setLogout,
+  setFriends,
+  setPosts,
+  setPost,
+  setUsers,
+} = siteSlice.actions;
 export default siteSlice.reducer;

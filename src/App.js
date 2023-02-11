@@ -9,6 +9,9 @@ import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Loginpage from "./pages/Loginpage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import LikedPostsPage from "./pages/LikedPosts";
+import WritersPage from "./pages/writersPage";
+import NewPostPage from "./pages/NewPost";
 import Adminpage from "./pages/Adminpage";
 
 function App() {
@@ -22,6 +25,9 @@ function App() {
           <CssBaseline />
           <Routes>
             <Route path="/" element={<Loginpage />} />
+            <Route path="liked-posts" element={<LikedPostsPage />} />
+            <Route path="new-post" element={<NewPostPage />} />
+            <Route path="writers" element={<WritersPage />} />
             <Route path="/admin" element={<Adminpage />} />
             <Route
               path="/home"

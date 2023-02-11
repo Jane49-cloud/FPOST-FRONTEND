@@ -9,7 +9,7 @@ import BreakingNews from "../components/BreakingNews";
 import Advert from "../components/Advert";
 import Adverts from "../data2";
 
-const HomePage = () => {
+const LikedPostsPage = () => {
   return (
     <>
       <Navbar />
@@ -23,7 +23,7 @@ const HomePage = () => {
             <Advert />
           </div>
           <div className="blogs">
-            <PostsWidget isAllPosts />
+            <PostsWidget isUserLikedPosts />
           </div>
         </div>
       </div>
@@ -31,4 +31,4 @@ const HomePage = () => {
     </>
   );
 };
-export default HomePage;
+export default LikedPostsPage;

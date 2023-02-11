@@ -78,24 +78,6 @@ const Form = () => {
     }
   };
 
-  // const login = async (values, onSubmitProps) => {
-  //   const loggedInResponse = await fetch("http://localhost:8000/users/login", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(values),
-  //   });
-  //   const loggedIn = await loggedInResponse.json();
-  //   onSubmitProps.resetForm();
-  //   if (loggedIn) {
-  //     dispatch(
-  //       setLogin({
-  //         user: loggedIn.user,
-  //         token: loggedIn.token,
-  //       })
-  //     );
-  //     navigate("/home");
-  //   }
-  // };
   const login = async (values, onSubmitProps) => {
     const loggedInResponse = await fetch("http://localhost:8000/users/login", {
       method: "POST",

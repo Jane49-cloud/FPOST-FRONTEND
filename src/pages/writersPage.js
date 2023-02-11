@@ -1,15 +1,12 @@
 import React from "react";
 import { Box, useMediaQuery } from "@mui/material";
 import Navbar from "../components/Navbar";
-import PostsWidget from "../components/posts";
+import Users from "../components/users";
 import UserProfile from "../components/UserProfile";
-import MyPostWidget from "../components/NewPost";
-import FlexBetween from "../components/FlexBetween";
 import BreakingNews from "../components/BreakingNews";
 import Advert from "../components/Advert";
-import Adverts from "../data2";
 
-const HomePage = () => {
+const WritersPage = () => {
   return (
     <>
       <Navbar />
@@ -23,7 +20,7 @@ const HomePage = () => {
             <Advert />
           </div>
           <div className="blogs">
-            <PostsWidget isAllPosts />
+            <Users />
           </div>
         </div>
       </div>
@@ -31,4 +28,4 @@ const HomePage = () => {
     </>
   );
 };
-export default HomePage;
+export default WritersPage;

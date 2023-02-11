@@ -2,35 +2,35 @@ import React, { useState, useEffect } from "react";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { FaQuoteRight } from "react-icons/fa";
 import "./news.css";
-import data from "../data2";
+import data from "../data";
 
-function Adverts() {
-  const [adverts, setadverts] = useState(data);
+function BreakingNews() {
+  const [news, setNews] = useState(data);
   const [index, setIndex] = React.useState(0);
 
   useEffect(() => {
-    const lastIndex = adverts.length - 1;
+    const lastIndex = news.length - 1;
     if (index < 0) {
       setIndex(lastIndex);
     }
     if (index > lastIndex) {
       setIndex(0);
     }
-  }, [index, adverts]);
+  }, [index, news]);
 
   useEffect(() => {
     let slider = setInterval(() => {
       setIndex(index + 1);
-    }, 6000);
+    }, 5000);
     return () => {
       clearInterval(slider);
     };
   }, [index]);
 
   return (
-    <section className="section2">
+    <section className="section">
       <div className="section-centered">
-        {adverts.map((item, itemIndex) => {
+        {news.map((item, itemIndex) => {
           const { id, img, name, title, description } = item;
 
           let position = "nextSlide";
@@ -39,7 +39,7 @@ function Adverts() {
           }
           if (
             itemIndex === index - 1 ||
-            (index === 0 && itemIndex === adverts.length - 1)
+            (index === 0 && itemIndex === news.length - 1)
           ) {
             position = "lastSlide";
           }
@@ -53,15 +53,15 @@ function Adverts() {
             </article>
           );
         })}
-        {/* <button className="prev" onClick={() => setIndex(index - 1)}>
+        <button className="prev" onClick={() => setIndex(index - 1)}>
           <FiChevronLeft />
         </button>
         <button className="next" onClick={() => setIndex(index + 1)}>
           <FiChevronRight />
-        </button> */}
+        </button>
       </div>
     </section>
   );
 }
 
-export default Adverts;
+export default BreakingNews;

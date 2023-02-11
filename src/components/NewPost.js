@@ -30,7 +30,10 @@ const MyPostWidget = () => {
   const [isImage, setIsImage] = useState(false);
   const [isUser, setIsUser] = useState(false);
   const [image, setImage] = useState(null);
-  const [post, setPost] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [content, setContent] = useState("");
+  // const [post, setPost] = useState("");
   const { palette } = useTheme();
   const { _id } = useSelector((store) => store.site.user);
   const user = useSelector((store) => store.site.user);
@@ -50,7 +53,9 @@ const MyPostWidget = () => {
   const handlePost = async () => {
     const formData = new FormData();
     formData.append("userId", _id);
-    formData.append("description", post);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("content", content);
     if (image) {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
@@ -64,12 +69,14 @@ const MyPostWidget = () => {
     const posts = await response.json();
     dispatch(setPosts({ posts }));
     setImage(null);
-    setPost("");
+    setTitle("");
+    setDescription("");
+    setContent("");
   };
 
   return !isUser ? (
     <WidgetWrapper height={"auto"}>
-      <FlexBetween gap="1.5rem" marginTop={"50px"}>
+      <FlexBetween gap="1.5rem" marginTop={"50px"} flexDirection="column">
         <Avatar
           src={`data:image/jpeg;base64,${user.picturePath}`}
           sx={{
@@ -78,9 +85,36 @@ const MyPostWidget = () => {
           }}
         />
         <InputBase
-          placeholder="What's on your mind..."
-          onChange={(e) => setPost(e.target.value)}
-          value={post}
+          placeholder="Add a title..."
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+          sx={{
+            width: "85%",
+            marginTop: "4px",
+            backgroundColor: palette.neutral.light,
+            borderRadius: "2rem",
+            padding: "0.5rem 2rem",
+            marginRight: "0.5rem",
+          }}
+        />
+        <InputBase
+          placeholder="Add a subtitle..."
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+          sx={{
+            width: "85%",
+            marginTop: "4px",
+            backgroundColor: palette.neutral.light,
+            borderRadius: "2rem",
+            padding: "0.5rem 2rem",
+            marginRight: "0.5rem",
+          }}
+        />
+
+        <InputBase
+          placeholder="Add content..."
+          onChange={(e) => setContent(e.target.value)}
+          value={content}
           sx={{
             width: "85%",
             marginTop: "4px",
@@ -168,7 +202,6 @@ const MyPostWidget = () => {
         )}
 
         <Button
-          disabled={!post}
           onClick={handlePost}
           sx={{
             color: palette.background.alt,
