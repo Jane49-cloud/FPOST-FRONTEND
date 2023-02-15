@@ -21,6 +21,8 @@ const PostWidget = ({
   userPicturePath,
   name,
   description,
+  title,
+  content,
   picturePath,
   likes,
   comments,
@@ -64,7 +66,7 @@ const PostWidget = ({
           <img src={`data:image/jpeg;base64,${picturePath}`} alt="" />
         </div>
         <div className="bottom">
-          <h3>This is the title</h3>
+          <h3>{title}</h3>
           <p>{description}</p>
           <div className="footer">
             <FlexBetween>

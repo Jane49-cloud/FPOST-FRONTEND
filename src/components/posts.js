@@ -71,6 +71,8 @@ const PostsWidget = ({
           firstName,
           lastName,
           description,
+          title,
+          content,
           picturePath,
           userPicturePath,
           likes,
@@ -86,6 +88,8 @@ const PostsWidget = ({
             userPicturePath={userPicturePath}
             likes={likes}
             comments={comments}
+            title={title}
+            content={content}
           />
         )
       )}

@@ -24,6 +24,8 @@ import WidgetWrapper from "../wrappers/WidgetWrapper";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../siteslise";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const MyPostWidget = () => {
   const dispatch = useDispatch();
@@ -76,7 +78,7 @@ const MyPostWidget = () => {
 
   return !isUser ? (
     <WidgetWrapper height={"auto"}>
-      <FlexBetween gap="1.5rem" marginTop={"50px"} flexDirection="column">
+      <FlexBetween>
         <Avatar
           src={`data:image/jpeg;base64,${user.picturePath}`}
           sx={{
@@ -84,15 +86,27 @@ const MyPostWidget = () => {
             margin: "4px",
           }}
         />
+        <Button
+          onClick={handlePost}
+          sx={{
+            color: palette.background.alt,
+            backgroundColor: palette.primary.main,
+            borderRadius: "0.5rem",
+            marginRight: "4px",
+          }}>
+          POST
+        </Button>
+      </FlexBetween>
+      <FlexBetween gap="1.5rem" marginTop={"50px"} flexDirection="column">
         <InputBase
           placeholder="Add a title..."
           onChange={(e) => setTitle(e.target.value)}
           value={title}
           sx={{
-            width: "85%",
+            width: "50%",
             marginTop: "4px",
             backgroundColor: palette.neutral.light,
-            borderRadius: "2rem",
+            borderRadius: "0.5rem",
             padding: "0.5rem 2rem",
             marginRight: "0.5rem",
           }}
@@ -102,31 +116,35 @@ const MyPostWidget = () => {
           onChange={(e) => setDescription(e.target.value)}
           value={description}
           sx={{
-            width: "85%",
+            width: "50%",
             marginTop: "4px",
             backgroundColor: palette.neutral.light,
-            borderRadius: "2rem",
+            borderRadius: "0.5rem",
             padding: "0.5rem 2rem",
             marginRight: "0.5rem",
           }}
         />
 
-        <InputBase
+        <ReactQuill
           placeholder="Add content..."
-          onChange={(e) => setContent(e.target.value)}
           value={content}
-          sx={{
+          onChange={setContent}
+          modules={{ toolbar: true }}
+          theme="snow"
+          style={{
             width: "85%",
-            marginTop: "4px",
+            // marginTop: "4px",
             backgroundColor: palette.neutral.light,
-            borderRadius: "2rem",
-            padding: "0.5rem 2rem",
+            borderRadius: "0.5rem",
+            // padding: "0.5rem 2rem",
             marginRight: "0.5rem",
+            height: "auto",
           }}
         />
       </FlexBetween>
       {isImage && (
         <Box
+          height="auto"
           border={`1px solid ${medium}`}
           borderRadius="5px"
           mt="1rem"
@@ -180,7 +198,7 @@ const MyPostWidget = () => {
 
         {isNonMobileScreens ? (
           <>
-            <FlexBetween gap="0.25rem">
+            {/* <FlexBetween gap="0.25rem">
               <GifBoxOutlined sx={{ color: mediumMain }} />
               <Typography color={mediumMain}>Clip</Typography>
             </FlexBetween>
@@ -193,24 +211,13 @@ const MyPostWidget = () => {
             <FlexBetween gap="0.25rem">
               <MicOutlined sx={{ color: mediumMain }} />
               <Typography color={mediumMain}>Audio</Typography>
-            </FlexBetween>
+            </FlexBetween> */}
           </>
         ) : (
           <FlexBetween gap="0.25rem">
             <MoreHorizOutlined sx={{ color: mediumMain }} />
           </FlexBetween>
         )}
-
-        <Button
-          onClick={handlePost}
-          sx={{
-            color: palette.background.alt,
-            backgroundColor: palette.primary.main,
-            borderRadius: "0.5rem",
-            marginRight: "4px",
-          }}>
-          POST
-        </Button>
       </FlexBetween>
     </WidgetWrapper>
   ) : null;
