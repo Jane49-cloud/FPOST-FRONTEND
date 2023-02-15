@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "../siteslise";
 import { Avatar } from "@mui/material";
 import { Buffer } from "buffer";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const PostWidget = ({
   userId,
@@ -94,8 +94,9 @@ const PostWidget = ({
                 <IconButton onClick={() => setIsComments(!isComments)}>
                   <ShareOutlined />
                 </IconButton>
-
-                <h4>Read</h4>
+                <Link to={`/posts/${postId}`}>
+                  <h4>Read</h4>
+                </Link>
               </FlexBetween>
             </FlexBetween>
           </div>

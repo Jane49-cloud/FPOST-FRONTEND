@@ -1,0 +1,57 @@
+.post-section {
+  width: 100vw;
+  display: flex;
+  min-height: 800px;
+}
+
+.full-post {
+  width: 80%;
+  margin: 30px auto;
+  padding: 0.5rem 2.25rem;
+}
+.full-blog {
+  background-color: white;
+  padding: 0.5rem 2.25rem;
+  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+}
+.img img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+.full-post h1,
+.full-post h2,
+.full-post h3,
+.full-post h4 {
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.full-post p {
+  line-height: 2;
+  font-size: 18px;
+}
+
+.blogger-profile {
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 2.25rem;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+}
+
+.blogger-profile img {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+}
+.bio {
+  margin-left: 10px;
+}

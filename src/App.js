@@ -13,6 +13,7 @@ import LikedPostsPage from "./pages/LikedPosts";
 import WritersPage from "./pages/writersPage";
 import NewPostPage from "./pages/NewPost";
 import Adminpage from "./pages/Adminpage";
+import SinglePostPage from "./pages/SinglePage";
 
 function App() {
   const mode = useSelector((store) => store.mode);
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Loginpage />} />
             <Route path="liked-posts" element={<LikedPostsPage />} />
+
             <Route path="new-post" element={<NewPostPage />} />
             <Route path="writers" element={<WritersPage />} />
             <Route path="/admin" element={<Adminpage />} />
@@ -33,6 +35,7 @@ function App() {
               path="/home"
               element={isAuth ? <HomePage /> : <Navigate to="/"></Navigate>}
             />
+            <Route path="/posts/:id" element={<SinglePostPage />} />
             <Route
               path="/profile/:userId"
               element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
