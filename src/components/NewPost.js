@@ -25,6 +25,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../siteslise";
 import ReactQuill from "react-quill";
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css";
 import "react-quill/dist/quill.snow.css";
 
 const MyPostWidget = () => {
@@ -62,6 +64,12 @@ const MyPostWidget = () => {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
     }
+    const modules = {
+      toolbar: [["code-block"]],
+      syntax: {
+        highlight: (text) => hljs.highlightAuto(text).value,
+      },
+    };
 
     const response = await fetch(`http://localhost:8000/posts/create`, {
       method: "POST",
@@ -78,7 +86,7 @@ const MyPostWidget = () => {
 
   return !isUser ? (
     <WidgetWrapper height={"auto"}>
-      <FlexBetween>
+      <FlexBetween p={"0.5rem  13rem"}>
         <Avatar
           src={`data:image/jpeg;base64,${user.picturePath}`}
           sx={{
@@ -97,13 +105,13 @@ const MyPostWidget = () => {
           POST
         </Button>
       </FlexBetween>
-      <FlexBetween gap="1.5rem" marginTop={"50px"} flexDirection="column">
+      <FlexBetween gap="1.5rem" flexDirection="column">
         <InputBase
           placeholder="Add a title..."
           onChange={(e) => setTitle(e.target.value)}
           value={title}
           sx={{
-            width: "50%",
+            width: "85%",
             marginTop: "4px",
             backgroundColor: palette.neutral.light,
             borderRadius: "0.5rem",
@@ -116,7 +124,7 @@ const MyPostWidget = () => {
           onChange={(e) => setDescription(e.target.value)}
           value={description}
           sx={{
-            width: "50%",
+            width: "85%",
             marginTop: "4px",
             backgroundColor: palette.neutral.light,
             borderRadius: "0.5rem",
@@ -129,7 +137,27 @@ const MyPostWidget = () => {
           placeholder="Add content..."
           value={content}
           onChange={setContent}
-          modules={{ toolbar: true }}
+          modules={{
+            toolbar: [
+              [
+                { header: "1" },
+                { header: "2" },
+                // { header: "3" },
+                // { header: "4" },
+                { font: [] },
+              ],
+              [{ size: [] }],
+              ["bold", "italic", "underline", "strike", "blockquote"],
+              [
+                { list: "ordered" },
+                { list: "bullet" },
+                { indent: "-1" },
+                { indent: "+1" },
+              ],
+              ["link", "image", "code-block"],
+              ["clean"],
+            ],
+          }}
           theme="snow"
           style={{
             width: "85%",

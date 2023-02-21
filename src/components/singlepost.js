@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import IsLoading from "./IsLoading";
 import { useDispatch, useSelector } from "react-redux";
 import FlexBetween from "./FlexBetween";
 
@@ -24,7 +25,7 @@ const SinglePost = () => {
   return (
     <>
       {Object.keys(post).length === 0 ? (
-        <div>Loading...</div>
+        <IsLoading />
       ) : (
         <>
           <div className="blogger-profile">

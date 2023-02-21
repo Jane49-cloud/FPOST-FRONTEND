@@ -121,6 +121,9 @@ img {
   object-position: center;
   border-bottom: 1px solid gray;
 }
+.post-card .bottom {
+  min-height: 120px;
+}
 .post-card p {
   color: gray;
   margin: 3px;

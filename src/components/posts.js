@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../siteslise";
 import PostWidget from "./post";
+import IsLoading from "./IsLoading";
 
 const PostsWidget = ({
   isAllPosts = false,
@@ -9,9 +10,7 @@ const PostsWidget = ({
   isUserLikedPosts = false,
 }) => {
   const [userId, setUserId] = useState(null);
-  // const [isAllPosts, setIsAllPosts] = useState(true);
-  // const [isProfile, setIsProfile] = useState(false);
-  // const [isUserLikedPosts, setIsUserLikedPosts] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const posts = useSelector((store) => store.site.posts);
   const token = useSelector((store) => store.site.token);
@@ -24,6 +23,7 @@ const PostsWidget = ({
     });
     const data = await response.json();
     dispatch(setPosts({ posts: data }));
+    setIsLoading(false);
   };
 
   const getUserPosts = async () => {
@@ -36,6 +36,7 @@ const PostsWidget = ({
     );
     const data = await response.json();
     dispatch(setPosts({ posts: data }));
+    setIsLoading(false);
   };
 
   const getUserLikedPosts = async () => {
@@ -48,6 +49,7 @@ const PostsWidget = ({
     );
     const data = await response.json();
     dispatch(setPosts({ posts: data }));
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -64,33 +66,37 @@ const PostsWidget = ({
 
   return (
     <>
-      {posts.map(
-        ({
-          _id,
-          userId,
-          firstName,
-          lastName,
-          description,
-          title,
-          content,
-          picturePath,
-          userPicturePath,
-          likes,
-          comments,
-        }) => (
-          <PostWidget
-            key={_id}
-            postId={_id}
-            postUserId={userId}
-            name={`${firstName}`}
-            description={description}
-            picturePath={picturePath}
-            userPicturePath={userPicturePath}
-            likes={likes}
-            comments={comments}
-            title={title}
-            content={content}
-          />
+      {isLoading ? ( // Render isLoading element if isLoading is true
+        <IsLoading />
+      ) : (
+        posts.map(
+          ({
+            _id,
+            userId,
+            firstName,
+            lastName,
+            description,
+            title,
+            content,
+            picturePath,
+            userPicturePath,
+            likes,
+            comments,
+          }) => (
+            <PostWidget
+              key={_id}
+              postId={_id}
+              postUserId={userId}
+              name={`${firstName}`}
+              description={description}
+              picturePath={picturePath}
+              userPicturePath={userPicturePath}
+              likes={likes}
+              comments={comments}
+              title={title}
+              content={content}
+            />
+          )
         )
       )}
     </>
