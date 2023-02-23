@@ -64,12 +64,6 @@ const MyPostWidget = () => {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
     }
-    const modules = {
-      toolbar: [["code-block"]],
-      syntax: {
-        highlight: (text) => hljs.highlightAuto(text).value,
-      },
-    };
 
     const response = await fetch(`http://localhost:8000/posts/create`, {
       method: "POST",

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import IsLoading from "./IsLoading";
 import { useDispatch, useSelector } from "react-redux";
-import FlexBetween from "./FlexBetween";
 
 const SinglePost = () => {
   const { id } = useParams();
@@ -49,7 +48,6 @@ const SinglePost = () => {
               </p>
             </div>
           </div>
-          <br />
           <div className="full-blog">
             <div>
               <h1>{post.title}</h1>

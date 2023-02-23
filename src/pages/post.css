@@ -8,6 +8,9 @@
   width: 80%;
   margin: 30px auto;
   padding: 0.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 .full-blog {
   background-color: white;
@@ -66,4 +69,55 @@ pre {
   margin: 1em 0;
   padding: 10px;
   white-space: pre-wrap;
+}
+
+.comment-section {
+  background-color: #fcfcfc;
+  margin-top: 10px;
+  padding: 2rem 3rem;
+  height: auto;
+  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+}
+
+.comment-section .post-comment {
+  padding: "2rem 3rem";
+  margin: auto;
+}
+.comment-section button {
+  min-width: 15%;
+  width: fit-content;
+  margin-top: "10px";
+  height: 40px;
+  outline: none;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 16px;
+  background: #ed6b07;
+  transition: ease 0.2;
+}
+
+.comment-section button:hover {
+  background-color: #f4a66a;
+}
+.post-comment h2 {
+  margin: 10px 20px;
+}
+
+.fetch-comment {
+  background-color: #eeee;
+  display: flex;
+  min-height: 60px;
+  padding: 20px;
+  gap: 3rem;
+}
+
+.fetch-comment img {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  object-fit: cover;
+  object-position: top center;
+}
+.author {
+  color: #be5606;
 }
