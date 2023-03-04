@@ -12,7 +12,6 @@ import ProfilePage from "./pages/ProfilePage";
 import LikedPostsPage from "./pages/LikedPosts";
 import WritersPage from "./pages/writersPage";
 import NewPostPage from "./pages/NewPost";
-import Adminpage from "./pages/Adminpage";
 import SinglePostPage from "./pages/SinglePage";
 
 function App() {
@@ -30,7 +29,7 @@ function App() {
 
             <Route path="new-post" element={<NewPostPage />} />
             <Route path="writers" element={<WritersPage />} />
-            <Route path="/admin" element={<Adminpage />} />
+            {/* <Route path="/admin" element={<Adminpage />} /> */}
             <Route
               path="/home"
               element={isAuth ? <HomePage /> : <Navigate to="/"></Navigate>}

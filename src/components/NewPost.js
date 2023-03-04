@@ -17,6 +17,10 @@ import {
   IconButton,
   useMediaQuery,
   Avatar,
+  Select,
+  MenuItem,
+  FormHelperText,
+  FormControl,
 } from "@mui/material";
 import FlexBetween from "./FlexBetween";
 import Dropzone from "react-dropzone";
@@ -126,6 +130,39 @@ const MyPostWidget = () => {
             marginRight: "0.5rem",
           }}
         />
+        <FlexBetween margin={"0px"}>
+          <FormControl>
+            <FormHelperText
+              sx={{
+                flex: 1,
+                fontWeight: 400,
+                color: "#11142d",
+                fontSize: "16px",
+              }}>
+              select topic
+            </FormHelperText>
+            <Select
+              variant="outlined"
+              color="info"
+              displayEmpty
+              required
+              inputProps={{ "aria-label": "without-label" }}
+              defaultValue="technology">
+              <MenuItem value="health and wellness">
+                Health and Wellness
+              </MenuItem>
+              <MenuItem value="travel">Travel</MenuItem>
+              <MenuItem value="coding">Coding</MenuItem>
+              <MenuItem value="technology">Technology</MenuItem>
+              <MenuItem value="education">Education</MenuItem>
+              <MenuItem value="entertainment">Entertainment</MenuItem>
+              <MenuItem value="Beauty">Beauty</MenuItem>
+              <MenuItem value="fashion">Fashion</MenuItem>
+            </Select>
+          </FormControl>
+
+          <div></div>
+        </FlexBetween>
 
         <ReactQuill
           placeholder="Add content..."
@@ -152,6 +189,7 @@ const MyPostWidget = () => {
               ["clean"],
             ],
           }}
+          className="quill-editor"
           theme="snow"
           style={{
             width: "85%",

@@ -78,7 +78,7 @@ const CreateComment = () => {
               <img src={`data:image/jpeg;base64,${comment.photo}`} alt="" />
             </div>
             <div className="comment-lower">
-              <h3 className="author">{comment.author}</h3>
+              <h6 className="author">{comment.author}</h6>
               <p>{comment.text}</p>
               <p>{new Date(comment.createdAt).toLocaleString()}</p>
             </div>
