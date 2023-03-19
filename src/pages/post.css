@@ -16,6 +16,7 @@
   background-color: white;
   padding: 0.5rem 2.25rem;
   box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+  margin-bottom: 2rem;
 }
 .img img,
 .full-post img {
@@ -84,7 +85,8 @@ pre {
   padding: "2rem 3rem";
   margin: auto;
 }
-.comment-section button {
+.comment-section button,
+.btn {
   min-width: 15%;
   width: fit-content;
   margin-top: "10px";
@@ -96,14 +98,41 @@ pre {
   background: #ed6b07;
   transition: ease 0.2;
 }
-
+.comment-section button,
+.btn:hover {
+  background-color: #f4a66a;
+}
+.btn {
+  display: inline-block;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 5px;
+  min-width: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+  margin: 2px;
+  background-color: #be5606;
+}
+.btn:hover {
+  background-color: #f4a66a;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
 .comment-section button:hover {
   background-color: #f4a66a;
 }
 .post-comment h2 {
   margin: 10px 20px;
 }
-
+.blog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .fetch-comment {
   background-color: #eeee;
   display: flex;

@@ -29,11 +29,12 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../siteslise";
 import ReactQuill from "react-quill";
-import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
 import "react-quill/dist/quill.snow.css";
+import { useNavigate } from "react-router-dom";
 
 const MyPostWidget = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isImage, setIsImage] = useState(false);
   const [isUser, setIsUser] = useState(false);
@@ -80,6 +81,8 @@ const MyPostWidget = () => {
     setTitle("");
     setDescription("");
     setContent("");
+
+    navigate("/home");
   };
 
   return !isUser ? (
