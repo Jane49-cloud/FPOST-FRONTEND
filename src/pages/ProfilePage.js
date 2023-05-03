@@ -1,21 +1,18 @@
-import { Box, useMediaQuery } from "@mui/material";
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import MyPostWidget from "../components/NewPost";
-import PostsWidget from "../components/posts";
-import UserWidget from "../components/UserProfile";
-import FlexBetween from "../components/FlexBetween";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const { userId } = useParams();
   const token = useSelector((store) => store.site.token);
-  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+
+  console.log("userId:", userId);
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:8000/users/${userId}`, {
+    if (!userId) return; // check if userId is defined
+    const response = await fetch(`/users/user/${userId}`, {
       method: "GET",
       headers: { Authorization: ` ${token}` },
     });
@@ -25,32 +22,24 @@ const ProfilePage = () => {
 
   useEffect(() => {
     getUser();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [userId]); // add userId to the dependency array
 
-  // if (!user) return null;
+  if (!userId) {
+    return <div>Loading user data...</div>;
+  }
 
   return (
     <Box>
-      <Navbar />
-      <Box
-        width="100%"
-        padding="2rem 6%"
-        display={isNonMobileScreens ? "flex" : "block"}
-        gap="2rem"
-        justifyContent="center">
-        <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
-          <UserWidget userId={userId} picturePath={user.picturePath} />
-          <Box m="2rem 0" />
-          <FlexBetween>userId={userId}</FlexBetween>
-        </Box>
-        <Box
-          flexBasis={isNonMobileScreens ? "42%" : undefined}
-          mt={isNonMobileScreens ? undefined : "2rem"}>
-          <MyPostWidget picturePath={user.picturePath} />
-          <Box m="2rem 0" />
-          <PostsWidget userId={userId} isProfile />
-        </Box>
-      </Box>
+      <h1>Profile Page</h1>
+      <p>userId: {userId}</p>
+      {user ? (
+        <div>
+          <p>First name: {user.firstName}</p>
+          <p>Last name: {user.lastName}</p>
+        </div>
+      ) : (
+        <p>Loading user data...</p>
+      )}
     </Box>
   );
 };

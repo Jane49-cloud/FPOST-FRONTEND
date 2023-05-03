@@ -29,11 +29,15 @@ const UserProfile = () => {
   const medium = palette.neutral.medium;
   const main = palette.neutral.main;
 
+  const navigateToProfile = () => {
+    navigate(`/profile/${userId}`);
+  };
+
   return (
     <>
       <div className="user-profile">
         {/* user image starts here */}
-        <div className="user-avatar">
+        <div className="user-avatar" onClick={navigateToProfile}>
           <img
             src={`data:image/jpeg;base64,${user.picturePath}`}
             alt=""

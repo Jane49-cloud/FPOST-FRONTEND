@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&family=Lato:wght@400;700&family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 body {
   margin: 0;
   font-family: "Gentium Book Plus", serif;
@@ -10,8 +10,20 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: "Poppins", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1rem; /* change the font size to your desired value */
+  line-height: 1.2; /* change the line height to your desired value */
+  margin: 0; /* remove any default margin */
+  padding: 0; /* remove any default padding */
+  color: black;
 }
 
 .App {

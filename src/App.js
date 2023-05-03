@@ -35,10 +35,7 @@ function App() {
               element={isAuth ? <HomePage /> : <Navigate to="/"></Navigate>}
             />
             <Route path="/posts/:id" element={<SinglePostPage />} />
-            <Route
-              path="/profile/:userId"
-              element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
-            />
+            <Route path="/profile/:userId" element={<ProfilePage />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>

@@ -68,7 +68,7 @@ const PostsWidget = ({
     <>
       {isLoading ? ( // Render isLoading element if isLoading is true
         <IsLoading />
-      ) : (
+      ) : posts && Array.isArray(posts) && posts.length > 0 ? (
         posts.map(
           ({
             _id,
@@ -98,6 +98,8 @@ const PostsWidget = ({
             />
           )
         )
+      ) : (
+        <p>No posts to show</p>
       )}
     </>
   );
